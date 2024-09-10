@@ -22,7 +22,6 @@
                         {{ $applyStateBindingModifiers('wire:model') }}="{{ $statePath }}"
                         class="rb-image"
                     />
-                    <span class="img-radio-selected"></span>
                     <div class="img-radio">
                         <img src="{{ asset(config('radiobuttonimage.storageName')) }}/{{ $image }}" alt="{{ $value }}" class="focus:bg-primary-500 cursor-pointer">
                     </div>
@@ -33,15 +32,9 @@
 </x-dynamic-component>
 
 <style>
-input[name="{{ $id }}"]:checked + .img-radio-selected {
-    background-color: rgba(var(--primary-500),var(--tw-bg-opacity));
-    transform: rotate(0.8648rad);
-    width: 110px;
-    height: 20px;
-    position: absolute;
-    top: 15px;
-    right: -30px;
-    z-index: 99999;
+input[name="{{ $id }}"]:checked + .img-radio {
+    border: 2px solid rgba(var(--primary-600),var(--tw-bg-opacity));
+    transition: all 0.3s ease;
 }
 
 .rb-image {
@@ -52,33 +45,21 @@ input[name="{{ $id }}"]:checked + .img-radio-selected {
 }
 
 .img-radio {
-    border: 1px solid #dee2e6;
+    border: 2px solid transparent;
     max-width: 100%;
     border-radius: 5px;
     cursor: pointer;
     display: block;
     height: auto;
     margin: auto;
-    padding: 5px;
+    padding: 2px;
     position: relative;
     width: 100%;
 }
 
-.img-radio:hover img {
-    -o-object-position: bottom;
-    object-position: bottom;
-}
-
 .img-radio img {
-    height: 400px;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: top;
-    object-position: top;
-    transform-origin: 50% 50%;
-    transition-duration: .1s;
-    transition: all 2s ease;
-    width: 100%;
+    width: 200px;
+    height: 200px;
 }
 
 .overflow-hidden {
